@@ -1,5 +1,4 @@
 const Componente = () => {
-    alert('Ola ')
     return (
         <>
             <p>Meu Primeiro Componente</p>
