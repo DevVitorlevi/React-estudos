@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import State from './components/State'
 
 import image from './assets/img1.jpg'
 function App() {
@@ -8,6 +9,8 @@ function App() {
   return (
     <>
       <img src={image} alt="" />
+
+      <State />
     </>
   )
 }
