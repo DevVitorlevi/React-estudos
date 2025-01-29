@@ -8,6 +8,8 @@ import ShowUsername from './components/ShowUsername'
 import CarDetails from './components/CarDetails'
 import Container from './components/Container'
 import Execute from './components/Execute'
+import Message from './components/Message'
+import AlterarMessage from './components/AlterarMessage'
 function App() {
   const name = 'Vitor'
 
@@ -28,6 +30,12 @@ function App() {
   const ShowMessage = () => {
     return console.log('clique')
   }
+
+  const [message, setMessage] = useState()
+
+  const alterarMessage = (msg) => {
+    setMessage(msg)
+  }
   return (
     <>
       <img src={image} alt="" />
@@ -43,6 +51,7 @@ function App() {
 
       {CarData.map((car) => (
         <CarDetails
+          key={car.id}
           model={car.model}
           km={car.km}
           color={car.color}
@@ -58,6 +67,9 @@ function App() {
       </Container>
 
       <Execute Myfunction={ShowMessage} />
+
+      <Message msg={message} />
+      <AlterarMessage alterarMessage={alterarMessage} />
     </>
   )
 }
