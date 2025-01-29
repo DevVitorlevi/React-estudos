@@ -7,6 +7,7 @@ import CondicionalRender from './components/CondicionalRender'
 import ShowUsername from './components/ShowUsername'
 import CarDetails from './components/CarDetails'
 import Container from './components/Container'
+import Execute from './components/Execute'
 function App() {
   const name = 'Vitor'
 
@@ -23,6 +24,10 @@ function App() {
     { id: 2, model: 'BMW', km: 0, color: 'yllow', newCar: true },
     { id: 3, model: 'VW', km: 110, color: 'Red', newCar: false },
   ]
+
+  const ShowMessage = () => {
+    return console.log('clique')
+  }
   return (
     <>
       <img src={image} alt="" />
@@ -51,6 +56,8 @@ function App() {
           <input type="text" />
         </form>
       </Container>
+
+      <Execute Myfunction={ShowMessage} />
     </>
   )
 }
