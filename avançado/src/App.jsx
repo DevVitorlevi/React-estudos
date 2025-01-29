@@ -6,6 +6,7 @@ import image from './assets/img1.jpg'
 import CondicionalRender from './components/CondicionalRender'
 import ShowUsername from './components/ShowUsername'
 import CarDetails from './components/CarDetails'
+import Container from './components/Container'
 function App() {
   const name = 'Vitor'
 
@@ -43,6 +44,13 @@ function App() {
           newCar={car.newCar}
         />
       ))}
+
+      <Container>
+        <form action="">
+          <label htmlFor="">Nome:</label>
+          <input type="text" />
+        </form>
+      </Container>
     </>
   )
 }
