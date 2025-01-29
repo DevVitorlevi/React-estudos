@@ -4,9 +4,11 @@ import State from './components/State'
 import ListRender from './components/ListRender'
 import image from './assets/img1.jpg'
 import CondicionalRender from './components/CondicionalRender'
+import ShowUsername from './components/ShowUsername'
 function App() {
-  const [count, setCount] = useState(0)
+  const name = 'Vitor'
 
+  const [Username] = useState('Vitor')
   return (
     <>
       <img src={image} alt="" />
@@ -14,6 +16,9 @@ function App() {
       <State />
       <ListRender />
       <CondicionalRender />
+      <ShowUsername name="Vitor" />
+      <ShowUsername name={name} />
+      <ShowUsername name={Username} />
     </>
   )
 }
