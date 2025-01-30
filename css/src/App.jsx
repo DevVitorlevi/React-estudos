@@ -1,4 +1,5 @@
 
+import Component from './components/Component'
 import './styles/App.css'
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
       <div className="teste-app">
         <p>Vitor</p>
       </div>
+
+      <Component />
     </>
   )
 }
