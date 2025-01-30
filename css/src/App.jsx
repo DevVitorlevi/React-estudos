@@ -5,6 +5,8 @@ import './styles/App.css'
 function App() {
   const n = 1
 
+  const redTitle = false
+
   return (
     <>
       <h1 style={n > 12 ? { color: 'blue', backgroundColor: 'black' } : null}>Style Ternário</h1>
@@ -14,6 +16,8 @@ function App() {
       </div>
 
       <Component />
+
+      <h1 className={redTitle ? "red" : "title"}>Vitor</h1>
     </>
   )
 }
