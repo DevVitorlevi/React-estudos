@@ -24,6 +24,11 @@
       "id": "6d27",
       "name": "cueca",
       "price": "20"
+    },
+    {
+      "id": "153a",
+      "name": "livro",
+      "price": "10"
     }
   ]
 }

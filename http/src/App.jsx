@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useFetch } from './hooks/useFetch';
 import './App.css'
 // Define a URL da API onde os dados dos produtos estão localizados
 const url = 'http://localhost:3000/products';
@@ -9,27 +10,12 @@ function App() {
   // Cria um estado chamado 'products' e uma função 'setProduct' para atualizá-lo
   // O estado inicial é um array vazio
   const [products, setProduct] = useState([]);
+  const { data: items } = useFetch(url)
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
-  // Usa o hook useEffect para executar um efeito colateral (buscar dados da API)
-  // O efeito será executado apenas uma vez, quando o componente for montado
-  useEffect(() => {
-    // Define uma função assíncrona chamada fetchData para buscar os dados da API
-    async function fetchData() {
-      // Faz uma requisição GET para a URL da API e espera a resposta
-      const res = await fetch(url);
 
-      // Converte a resposta em formato JSON e espera o resultado
-      const data = await res.json();
 
-      // Atualiza o estado 'products' com os dados recebidos da API
-      setProduct(data);
-    }
-
-    // Chama a função fetchData para executar a busca dos dados
-    fetchData();
-  }, []); // O array vazio [] garante que o useEffect só será executado uma vez
 
   // Define uma função assíncrona chamada `addProduct` que recebe um evento `e` como parâmetro.
   const addProduct = async (e) => {
@@ -54,8 +40,6 @@ function App() {
     //
     setName("")//Reseta o Valor
     setPrice("")//Reseta o Valor
-
-
   }
 
 
@@ -63,13 +47,9 @@ function App() {
     <>
 
       <ul>
-        {products.map((product) => (
-          // Cada item da lista tem uma chave única (key) para ajudar o React na renderização
-          <li key={product.id}>
-            {/* Exibe o nome e o preço do produto */}
-            {product.name} - R$:{product.price}
-          </li>
-        ))}
+        {items ? (items.map((product) => (
+          <li key={product.id}>{product.name}-{product.price}</li>
+        ))) : (undefined)}
       </ul>
       <div>
         <form onSubmit={addProduct}>
