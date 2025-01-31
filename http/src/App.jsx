@@ -9,6 +9,8 @@ function App() {
   // Cria um estado chamado 'products' e uma função 'setProduct' para atualizá-lo
   // O estado inicial é um array vazio
   const [products, setProduct] = useState([]);
+  const [name, setName] = useState("")
+  const [price, setPrice] = useState("")
 
   // Usa o hook useEffect para executar um efeito colateral (buscar dados da API)
   // O efeito será executado apenas uma vez, quando o componente for montado
@@ -29,9 +31,26 @@ function App() {
     fetchData();
   }, []); // O array vazio [] garante que o useEffect só será executado uma vez
 
-  // Retorna o JSX que será renderizado na tela
-  return (
+  // Define uma função assíncrona chamada `addProduct` que recebe um evento `e` como parâmetro.
+  const addProduct = async (e) => {
+    // Previne o comportamento padrão do evento, que no caso de um formulário seria o recarregamento da página.
+    e.preventDefault();
 
+    const product = {
+      name,
+      price
+    };
+
+    const res = await fetch(url, {
+      method: "POST", // Define o método da requisição como POST.
+      headers: {
+        "Content-Type": "application/json" // Define o cabeçalho para indicar que o corpo da requisição é JSON.
+      },
+      body: JSON.stringify(product) // Converte o objeto `product` para uma string JSON e envia no corpo da requisição.
+    });
+  }
+
+  return (
     <>
 
       <ul>
@@ -43,6 +62,33 @@ function App() {
           </li>
         ))}
       </ul>
+      <div>
+        <form onSubmit={addProduct}>
+          <label>
+            Nome:
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)} // Atualiza o estado `name` quando o valor do input muda
+            />
+          </label>
+
+          <label>
+            Preço:
+            <input
+              type="number"
+              name="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)} // Atualiza o estado `price` quando o valor do input muda
+            />
+          </label>
+          <input
+            type="submit"
+            value="Enviar"
+          />
+        </form>
+      </div>
     </>
   );
 }

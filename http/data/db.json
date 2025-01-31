@@ -1,19 +1,24 @@
 {
     "products": [
         {
-            "id": 1,
+            "id": "1",
             "name": "Camisa",
             "price": 59.9
         },
         {
-            "id": 2,
+            "id": "2",
             "name": "Calça vermelha",
             "price": 90
         },
         {
-            "id": 3,
+            "id": "3",
             "name": "Boné aba reta",
             "price": 29.9
+        },
+        {
+            "id": "f285",
+            "name": "short",
+            "price": "15.00"
         }
     ]
 }
