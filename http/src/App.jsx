@@ -48,7 +48,16 @@ function App() {
       },
       body: JSON.stringify(product) // Converte o objeto `product` para uma string JSON e envia no corpo da requisição.
     });
+    const addedProduct = await res.json()// trasnformando em object json
+
+    setProduct((prevProducts) => [...prevProducts, addedProduct])
+    //
+    setName("")//Reseta o Valor
+    setPrice("")//Reseta o Valor
+
+
   }
+
 
   return (
     <>
