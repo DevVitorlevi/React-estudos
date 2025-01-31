@@ -10,7 +10,7 @@ function App() {
   // Cria um estado chamado 'products' e uma função 'setProduct' para atualizá-lo
   // O estado inicial é um array vazio
   const [products, setProduct] = useState([]);
-  const { data: items } = useFetch(url)
+  const { data: items, httpConfig } = useFetch(url)// renomeadno data
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
@@ -27,17 +27,8 @@ function App() {
       price
     };
 
-    const res = await fetch(url, {
-      method: "POST", // Define o método da requisição como POST.
-      headers: {
-        "Content-Type": "application/json" // Define o cabeçalho para indicar que o corpo da requisição é JSON.
-      },
-      body: JSON.stringify(product) // Converte o objeto `product` para uma string JSON e envia no corpo da requisição.
-    });
-    const addedProduct = await res.json()// trasnformando em object json
+    httpConfig(product, 'POST')
 
-    setProduct((prevProducts) => [...prevProducts, addedProduct])
-    //
     setName("")//Reseta o Valor
     setPrice("")//Reseta o Valor
   }

@@ -29,6 +29,11 @@
       "id": "153a",
       "name": "livro",
       "price": "10"
+    },
+    {
+      "id": "3670",
+      "name": "roupa",
+      "price": "20"
     }
   ]
 }
