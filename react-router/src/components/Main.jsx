@@ -1,6 +1,7 @@
 import React from 'react'
 import { useFetch } from '../hooks/useFetch'
 import style from '../styles/Main.module.css'
+import { Link } from 'react-router-dom'
 
 const Main = () => {
     const url = 'http://localhost:3000/products'
@@ -19,6 +20,7 @@ const Main = () => {
                                 <li key={product.id} id={style.li}>
                                     <h2>{product.name}</h2>
                                     <p>R$:{product.price}</p>
+                                    <Link to={`/products/${product.id}`}>Detalhes</Link>
                                 </li>
                             ))
                         ) : (null)}
