@@ -10,6 +10,7 @@ export const useFetch = (url) => {
     const [method, setMethod] = useState(null);
     // Estado que controla a reexecução da busca após uma requisição POST
     const [callFetch, setCallFetch] = useState(false);
+    const [loading, setLoading] = useState(false)
 
     // Função para configurar a requisição HTTP
     const httpConfig = (data, method) => {
@@ -28,10 +29,12 @@ export const useFetch = (url) => {
     // useEffect para buscar os dados da API (método GET)
     useEffect(() => {   
         async function fetchData() {
+            setLoading(true)
             const res = await fetch(url); // Faz a requisição para a URL
             const json = await res.json(); // Converte a resposta para JSON
 
             setData(json); // Atualiza o estado `data` com os dados obtidos
+            setLoading(false)
         }
 
         fetchData(); // Chama a função para buscar os dados
@@ -56,5 +59,5 @@ export const useFetch = (url) => {
     }, [config, method, url]); // Executa sempre que `config` ou `method` mudar
 
     // Retorna os dados e a função para configurar requisições HTTP
-    return { data, httpConfig };
+    return { data, httpConfig, loading };
 };

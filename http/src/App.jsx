@@ -10,7 +10,7 @@ function App() {
   // Cria um estado chamado 'products' e uma função 'setProduct' para atualizá-lo
   // O estado inicial é um array vazio
   const [products, setProduct] = useState([]);
-  const { data: items, httpConfig } = useFetch(url)// renomeadno data
+  const { data: items, httpConfig, loading } = useFetch(url)// renomeadno data
   const [name, setName] = useState("")
   const [price, setPrice] = useState("")
 
@@ -37,11 +37,18 @@ function App() {
   return (
     <>
 
-      <ul>
-        {items ? (items.map((product) => (
-          <li key={product.id}>{product.name}-{product.price}</li>
-        ))) : (undefined)}
-      </ul>
+      <h1>Lista de Produtos</h1>
+      {
+        loading ? (<p>Carregando...</p>) : (
+          <ul>
+            {items ? (
+              items.map((product) => (
+                <li key={product.id}>{product.name}-{product.price}</li>
+              ))
+            ) : (null)}
+          </ul>
+        )
+      }
       <div>
         <form onSubmit={addProduct}>
           <label>
