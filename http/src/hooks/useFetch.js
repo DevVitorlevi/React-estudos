@@ -1,59 +1,60 @@
-
 import { useState, useEffect } from 'react';
 
+// Hook personalizado para fazer requisições HTTP
 export const useFetch = (url) => {
-    // Cria um estado chamado `data` e uma função `setData` para atualizá-lo.
-    // O valor inicial de `data` é `null`.
+    // Estado que armazena os dados da requisição
     const [data, setData] = useState(null);
-    const [config,setConfig] = useState(null)
-    const [method,setMethod] = useState(null)
-    const [callFetch,setCallFetch] = useState(null)
+    // Estado que armazena a configuração da requisição HTTP
+    const [config, setConfig] = useState(null);
+    // Estado que armazena o método da requisição (ex: GET, POST)
+    const [method, setMethod] = useState(null);
+    // Estado que controla a reexecução da busca após uma requisição POST
+    const [callFetch, setCallFetch] = useState(false);
 
-    const httpConfig = (data,method) =>{
-        if(method === 'POST'){
+    // Função para configurar a requisição HTTP
+    const httpConfig = (data, method) => {
+        if (method === 'POST') {
             setConfig({
-                method:'POST',
-                headers:{
-                    "Content-Type":"application/json"
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json" // Define o formato dos dados como JSON
                 },
-                body:JSON.stringify(data)
-            })
-            setMethod(method)   
+                body: JSON.stringify(data) // Converte os dados para JSON antes de enviar
+            });
+            setMethod(method); // Define o método da requisição como POST
         }
-    }
+    };
+
+    // useEffect para buscar os dados da API (método GET)
     useEffect(() => {   
         async function fetchData() {
-            const res = await fetch(url);
-            const json = await res.json();
+            const res = await fetch(url); // Faz a requisição para a URL
+            const json = await res.json(); // Converte a resposta para JSON
 
-            // Atualiza o estado `data` com os dados obtidos da API.
-            setData(json);
+            setData(json); // Atualiza o estado `data` com os dados obtidos
         }
 
-        // Chama a função `fetchData` para iniciar o processo de busca de dados.
-        fetchData();
+        fetchData(); // Chama a função para buscar os dados
 
-    }, [url,callFetch]); // A lista de dependências do `useEffect` contém a URL.
-    // Isso significa que o efeito será reexecutado sempre que a URL mudar.
+    }, [url, callFetch]); // Reexecuta a busca sempre que a URL ou callFetch mudar
 
+    // useEffect para lidar com requisições POST
+    useEffect(() => {
+        const httpRequest = async () => {
+            if (method === 'POST') {
+                let fetchOptions = [url, config]; // Configuração da requisição
 
-    useEffect(()=>{
-        const httpRequest = async () =>{
-            if(method === 'POST'){
-                let fetchOptions  = [url,config]
+                const res = await fetch(...fetchOptions); // Faz a requisição POST
+                const json = await res.json(); // Converte a resposta para JSON
 
-                const res = await fetch(...fetchOptions)
-                const json = await res.json()
-
-            setCallFetch(json)
-
+                setCallFetch(json); // Atualiza o estado para reexecutar o primeiro useEffect
             }
+        };
 
-        }
+        httpRequest(); // Chama a função para executar a requisição POST
 
-        httpRequest()
-    },[config,method,url])
-    // Retorna um objeto contendo o estado `data`.
-    // Isso permite que o componente que utiliza esse hook acesse os dados obtidos.
+    }, [config, method, url]); // Executa sempre que `config` ou `method` mudar
+
+    // Retorna os dados e a função para configurar requisições HTTP
     return { data, httpConfig };
 };
