@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles/App.css'
 //pages
-import Main from './components/Main'
-import About from './components/About'
+import Main from './pages/Main'
+import About from './pages/About'
 //componentes
 import Header from './components/Header'
-import Product from './components/Product'
-import Info from './components/Info'
+import Product from './pages/Product'
+import Info from './pages/Info'
 function App() {
 
   return (
