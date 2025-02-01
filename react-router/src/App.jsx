@@ -3,12 +3,14 @@ import './styles/App.css'
 //pages
 import Main from './components/Main'
 import About from './components/About'
+//componentes
+import Header from './components/Header'
 function App() {
 
   return (
     <>
-      <h1>React Router</h1>
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path='/main' element={<Main />} />
           <Route path='/about' element={<About />} />

@@ -1,0 +1,39 @@
+header {
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+li {
+    position: relative;
+    font-size: 1.8rem;
+}
+
+li:after {
+    content: '';
+    position: absolute;
+    height: 5px;
+    width: 0px;
+    background-color: white;
+    border-radius: 10px;
+    bottom: -2px;
+    right: 0%;
+    transition: 1s;
+}
+
+li:hover:after {
+    width: 100%;
+    left: 0%;
+}
