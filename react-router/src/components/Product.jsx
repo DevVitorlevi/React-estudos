@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"; // Hook para obter parâmetros da URL
 import { useFetch } from "../hooks/useFetch"; // Hook personalizado para buscar dados da API
-
+import { Link } from "react-router-dom";
 const Product = () => {
     // Obtém o parâmetro 'id' da URL
     const { id } = useParams();
@@ -26,6 +26,7 @@ const Product = () => {
                     <div>
                         <h1>{product.name}</h1>
                         <p>R$: {product.price}</p>
+                        <Link to={`/products/${product.id}/info`}>More Info</Link>
                     </div>
                 )}
             </div>

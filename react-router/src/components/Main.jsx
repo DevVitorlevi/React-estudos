@@ -2,6 +2,7 @@ import React from 'react'
 import { useFetch } from '../hooks/useFetch'
 import style from '../styles/Main.module.css'
 import { Link } from 'react-router-dom'
+import Product from './Product'
 
 const Main = () => {
     const url = 'http://localhost:3000/products'

@@ -6,6 +6,7 @@ import About from './components/About'
 //componentes
 import Header from './components/Header'
 import Product from './components/Product'
+import Info from './components/Info'
 function App() {
 
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/main' element={<Main />} />
           <Route path='/about' element={<About />} />
           <Route path='/products/:id' element={<Product />} />
+          <Route path='/products/:id/info' element={<Info />} />
         </Routes>
       </BrowserRouter>
     </>
