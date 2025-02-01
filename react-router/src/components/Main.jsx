@@ -1,8 +1,31 @@
 import React from 'react'
+import { useFetch } from '../hooks/useFetch'
+import style from '../styles/Main.module.css'
 
 const Main = () => {
+    const url = 'http://localhost:3000/products'
+    const { data: items, loading, error } = useFetch(url)
     return (
-        <div> Acessando Main</div>
+        <div>
+            <h1 id={style.h1}> Produtos</h1>
+            {error ? (
+                <p>Ocorreu um error:{error}</p>
+            ) : null}
+            {
+                loading ? (<p>Carregando...</p>) : (
+                    <ul id={style.ul}>
+                        {items ? (
+                            items.map((product) => (
+                                <li key={product.id} id={style.li}>
+                                    <h2>{product.name}</h2>
+                                    <p>R$:{product.price}</p>
+                                </li>
+                            ))
+                        ) : (null)}
+                    </ul>
+                )
+            }
+        </div>
     )
 }
 

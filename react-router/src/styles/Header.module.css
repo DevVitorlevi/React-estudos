@@ -1,27 +1,27 @@
-header {
-    background-color: blue;
+#header {
+    background-color: rgb(99, 0, 0);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
 }
 
-nav ul {
+#nav #list {
     display: flex;
     gap: 1.5rem;
     list-style: none;
 }
 
-nav a {
+#nav .a {
     text-decoration: none;
 }
 
-li {
+.item {
     position: relative;
     font-size: 1.8rem;
 }
 
-li:after {
+.item:after {
     content: '';
     position: absolute;
     height: 5px;
@@ -33,7 +33,7 @@ li:after {
     transition: 1s;
 }
 
-li:hover:after {
+.item:hover:after {
     width: 100%;
     left: 0%;
 }

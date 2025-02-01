@@ -1,0 +1,25 @@
+#ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    text-align: center;
+}
+
+#h1 {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+}
+
+#li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    border: 0;
+    width: 30rem;
+    border-bottom: 1px solid white;
+}
