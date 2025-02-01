@@ -70,10 +70,20 @@ function App() {
               onChange={(e) => setPrice(e.target.value)} // Atualiza o estado `price` quando o valor do input muda
             />
           </label>
-          <input
-            type="submit"
-            value="Enviar"
-          />
+          {
+            loading ? (
+              <input
+                type="submit"
+                disabled//bloqueia o botão
+                value="Aguarde..."
+              />
+            ) : (
+              <input
+                type="submit"
+                value="Enviar"
+              />
+            )
+          }
         </form>
       </div>
     </>

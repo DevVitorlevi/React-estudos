@@ -39,6 +39,11 @@
       "id": "7f3f",
       "name": "roupa",
       "price": "20"
+    },
+    {
+      "id": "2b06",
+      "name": "teste",
+      "price": "1"
     }
   ]
 }
