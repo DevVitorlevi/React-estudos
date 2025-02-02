@@ -13,9 +13,9 @@ const SearchForm = () => {  // Define o componente funcional 'SearchForm'
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>  // Formulário que chama 'handleSubmit' quando enviado
-                <input type="text" onChange={(e) => setQuery(e.target.value)} />  // Campo de input que atualiza o estado 'query' sempre que o usuário digita algo
-                <button type="submit">Buscar</button>  // Botão de envio do formulário
+            <form onSubmit={handleSubmit}>
+                <input type="text" onChange={(e) => setQuery(e.target.value)} />
+                <button type="submit">Buscar</button>
             </form>
         </div>
     )
