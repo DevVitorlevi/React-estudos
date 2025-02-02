@@ -24,8 +24,9 @@ const Product = () => {
                 {/* Exibe os dados do produto apenas se não estiver carregando, sem erro e se os dados existirem */}
                 {!loading && !error && product && (
                     <div>
-                        <h1>{product.name}</h1>
-                        <p>R$: {product.price}</p>
+                        <h1>{product.name}</h1> {/*Nome do Produto*/}
+                        <p>R$: {product.price}</p>{/*Preço do Produto*/}
+                        {/*Link para mais informações sobre o produto*/}
                         <Link to={`/products/${product.id}/info`}>More Info</Link>
                     </div>
                 )}

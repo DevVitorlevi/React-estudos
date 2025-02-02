@@ -24,7 +24,7 @@ const Main = () => {
                                     <Link to={`/products/${product.id}`}>Detalhes</Link>
                                 </li>
                             ))
-                        ) : (null)}
+                        ) : null}
                     </ul>
                 )
             }

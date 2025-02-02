@@ -3,10 +3,11 @@ import './styles/App.css'
 //pages
 import Main from './pages/Main'
 import About from './pages/About'
-//componentes
-import Header from './components/Header'
 import Product from './pages/Product'
 import Info from './pages/Info'
+import NotFound from './pages/NotFound'
+//componentes
+import Header from './components/Header'
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/products/:id' element={<Product />} />
           <Route path='/products/:id/info' element={<Info />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
